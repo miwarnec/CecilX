@@ -20,9 +20,9 @@ namespace Mono.Cecil {
 	}
 
 	public interface IMetadataResolver {
-		TypeDefinition Resolve (TypeReference type);
-		FieldDefinition Resolve (FieldReference field);
-		MethodDefinition Resolve (MethodReference method);
+		TypeDefinition Resolve (TypeReference type, int recursionCount);
+		FieldDefinition Resolve (FieldReference field, int recursionCount);
+		MethodDefinition Resolve (MethodReference method, int recursionCount);
 	}
 
 #if !NET_CORE
@@ -94,7 +94,7 @@ namespace Mono.Cecil {
 			assembly_resolver = assemblyResolver;
 		}
 
-		public virtual TypeDefinition Resolve (TypeReference type)
+		public virtual TypeDefinition Resolve (TypeReference type, int recursionCount)
 		{
 			Mixin.CheckType (type);
 
@@ -111,9 +111,9 @@ namespace Mono.Cecil {
 				if (assembly == null)
 					return null;
 
-				return GetType (assembly.MainModule, type);
+				return GetType (assembly.MainModule, type, recursionCount);
 			case MetadataScopeType.ModuleDefinition:
-				return GetType ((ModuleDefinition) scope, type);
+				return GetType ((ModuleDefinition) scope, type, recursionCount);
 			case MetadataScopeType.ModuleReference:
 				if (type.Module.Assembly == null)
 					return null;
@@ -123,7 +123,7 @@ namespace Mono.Cecil {
 				for (int i = 0; i < modules.Count; i++) {
 					var netmodule = modules [i];
 					if (netmodule.Name == module_ref.Name)
-						return GetType (netmodule, type);
+						return GetType (netmodule, type, recursionCount);
 				}
 				break;
 			}
@@ -131,7 +131,7 @@ namespace Mono.Cecil {
 			throw new NotSupportedException ();
 		}
 
-		static TypeDefinition GetType (ModuleDefinition module, TypeReference reference)
+		static TypeDefinition GetType (ModuleDefinition module, TypeReference reference, int recursionCount)
 		{
 			var type = GetTypeDefinition (module, reference);
 			if (type != null)
@@ -150,7 +150,7 @@ namespace Mono.Cecil {
 				if (exported_type.Namespace != reference.Namespace)
 					continue;
 
-				return exported_type.Resolve ();
+				return exported_type.Resolve (recursionCount);
 			}
 
 			return null;
@@ -168,21 +168,21 @@ namespace Mono.Cecil {
 			return declaring_type.GetNestedType (type.TypeFullName ());
 		}
 
-		public virtual FieldDefinition Resolve (FieldReference field)
+		public virtual FieldDefinition Resolve (FieldReference field, int recursionCount)
 		{
 			Mixin.CheckField (field);
 
-			var type = Resolve (field.DeclaringType);
+			var type = Resolve (field.DeclaringType, recursionCount);
 			if (type == null)
 				return null;
 
 			if (!type.HasFields)
 				return null;
 
-			return GetField (type, field);
+			return GetField (type, field, recursionCount);
 		}
 
-		FieldDefinition GetField (TypeDefinition type, FieldReference reference)
+		FieldDefinition GetField (TypeDefinition type, FieldReference reference, int recursionCount)
 		{
 			while (type != null) {
 				var field = GetField (type.Fields, reference);
@@ -192,7 +192,7 @@ namespace Mono.Cecil {
 				if (type.BaseType == null)
 					return null;
 
-				type = Resolve (type.BaseType);
+				type = Resolve (type.BaseType, recursionCount);
 			}
 
 			return null;
@@ -215,11 +215,11 @@ namespace Mono.Cecil {
 			return null;
 		}
 
-		public virtual MethodDefinition Resolve (MethodReference method)
+		public virtual MethodDefinition Resolve (MethodReference method, int recursionCount)
 		{
 			Mixin.CheckMethod (method);
 
-			var type = Resolve (method.DeclaringType);
+			var type = Resolve (method.DeclaringType, recursionCount);
 			if (type == null)
 				return null;
 
@@ -228,10 +228,10 @@ namespace Mono.Cecil {
 			if (!type.HasMethods)
 				return null;
 
-			return GetMethod (type, method);
+			return GetMethod (type, method, recursionCount);
 		}
 
-		MethodDefinition GetMethod (TypeDefinition type, MethodReference reference)
+		MethodDefinition GetMethod (TypeDefinition type, MethodReference reference, int recursionCount)
 		{
 			while (type != null) {
 				var method = GetMethod (type.Methods, reference);
@@ -241,7 +241,7 @@ namespace Mono.Cecil {
 				if (type.BaseType == null)
 					return null;
 
-				type = Resolve (type.BaseType);
+				type = Resolve (type.BaseType, recursionCount);
 			}
 
 			return null;
