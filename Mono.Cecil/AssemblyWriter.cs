@@ -17,10 +17,9 @@ using System.Security.Cryptography;
 
 using Mono;
 using Mono.Collections.Generic;
-using Mono.Cecil.Cil;
-using Mono.Cecil.Metadata;
-using Mono.Cecil.PE;
-
+using Mono.CecilX.Cil;
+using Mono.CecilX.Metadata;
+using Mono.CecilX.PE;
 using RVA = System.UInt32;
 using RID = System.UInt32;
 using CodedRID = System.UInt32;
@@ -28,7 +27,7 @@ using StringIndex = System.UInt32;
 using BlobIndex = System.UInt32;
 using GuidIndex = System.UInt32;
 
-namespace Mono.Cecil {
+namespace Mono.CecilX {
 
 	using ModuleRow      = Row<StringIndex, GuidIndex>;
 	using TypeRefRow     = Row<CodedRID, StringIndex, StringIndex>;

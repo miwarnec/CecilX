@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Mono.Cecil;
+using Mono.CecilX;
 using NUnit.Framework;
 
-namespace Mono.Cecil.Tests {
+namespace Mono.CecilX.Tests {
 
 	[TestFixture]
 	public class TypeReferenceComparisonTests : LoadAssemblyDefinitionForTestsBaseSimple {

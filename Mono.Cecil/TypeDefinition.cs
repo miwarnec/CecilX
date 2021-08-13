@@ -10,10 +10,10 @@
 
 using System;
 using System.Threading;
-using Mono.Cecil.Metadata;
+using Mono.CecilX.Metadata;
 using Mono.Collections.Generic;
 
-namespace Mono.Cecil {
+namespace Mono.CecilX {
 
 	public sealed class TypeDefinition : TypeReference, IMemberDefinition, ISecurityDeclarationProvider {
 

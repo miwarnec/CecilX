@@ -13,13 +13,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using SR = System.Reflection;
-
-using Mono.Cecil.Cil;
-using Mono.Cecil.Metadata;
-using Mono.Cecil.PE;
+using Mono.CecilX.Cil;
+using Mono.CecilX.Metadata;
+using Mono.CecilX.PE;
 using Mono.Collections.Generic;
 
-namespace Mono.Cecil {
+namespace Mono.CecilX {
 
 	public enum ReadingMode {
 		Immediate = 1,
@@ -940,7 +939,7 @@ namespace Mono.Cecil {
 		{
 			return Read (token, (t, reader) => reader.LookupToken (t));
 		}
-		
+
 		public void ImmediateRead ()
 		{
 			if (!HasImage)

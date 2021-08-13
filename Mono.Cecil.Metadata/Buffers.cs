@@ -11,12 +11,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
-using Mono.Cecil.PE;
-
+using Mono.CecilX.PE;
 using RVA = System.UInt32;
 
-namespace Mono.Cecil.Metadata {
+namespace Mono.CecilX.Metadata {
 
 	sealed class TableHeapBuffer : HeapBuffer {
 

@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using NUnit.Framework;
-
-using Mono.Cecil.Rocks;
+using Mono.CecilX.Rocks;
 
 namespace N
 {
@@ -118,7 +117,7 @@ namespace N
 	public class KVP<K, T> { }
 }
 
-namespace Mono.Cecil.Tests {
+namespace Mono.CecilX.Tests {
 
 	[TestFixture]
 	public class DocCommentIdTests {

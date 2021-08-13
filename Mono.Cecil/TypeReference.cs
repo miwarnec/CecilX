@@ -10,10 +10,10 @@
 
 using System;
 using System.Threading;
-using Mono.Cecil.Metadata;
+using Mono.CecilX.Metadata;
 using Mono.Collections.Generic;
 
-namespace Mono.Cecil {
+namespace Mono.CecilX {
 
 	public enum MetadataType : byte {
 		Void = ElementType.Void,
@@ -125,7 +125,7 @@ namespace Mono.Cecil {
 			get {
 				if (generic_parameters == null)
 					Interlocked.CompareExchange (ref generic_parameters, new GenericParameterCollection (this), null);
-					
+
 				return generic_parameters;
 			}
 		}

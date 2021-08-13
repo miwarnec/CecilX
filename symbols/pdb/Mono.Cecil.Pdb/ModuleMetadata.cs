@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Mono.Cecil.Pdb {
+namespace Mono.CecilX.Pdb {
 
 	// WARNING: most methods should be reworked into PreserveSig methods
 

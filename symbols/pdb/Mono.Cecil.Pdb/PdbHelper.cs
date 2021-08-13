@@ -10,10 +10,9 @@
 
 using System;
 using System.IO;
+using Mono.CecilX.Cil;
 
-using Mono.Cecil.Cil;
-
-namespace Mono.Cecil.Pdb {
+namespace Mono.CecilX.Pdb {
 
 	public sealed class NativePdbReaderProvider : ISymbolReaderProvider {
 
@@ -46,7 +45,7 @@ namespace Mono.Cecil.Pdb {
 				if (entry != null)
 					return new EmbeddedPortablePdbReaderProvider ().GetSymbolReader (module, fileName);
 			}
-			
+
 			Mixin.CheckFileName (fileName);
 
 			return Mixin.IsPortablePdb (Mixin.GetPdbFileName (fileName))

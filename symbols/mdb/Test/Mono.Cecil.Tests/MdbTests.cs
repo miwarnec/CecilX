@@ -1,10 +1,9 @@
-using Mono.Cecil.Cil;
-using Mono.Cecil.Mdb;
-
 using NUnit.Framework;
 using System.IO;
+using Mono.CecilX.Cil;
+using Mono.CecilX.Mdb;
 
-namespace Mono.Cecil.Tests {
+namespace Mono.CecilX.Tests {
 
 	[TestFixture]
 	public class MdbTests : BaseTestFixture {

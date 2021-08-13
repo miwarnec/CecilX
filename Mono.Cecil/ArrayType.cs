@@ -12,9 +12,9 @@ using System;
 using System.Text;
 using System.Threading;
 using Mono.Collections.Generic;
-using MD = Mono.Cecil.Metadata;
+using MD = Mono.CecilX.Metadata;
 
-namespace Mono.Cecil {
+namespace Mono.CecilX {
 
 	public struct ArrayDimension {
 
@@ -125,7 +125,7 @@ namespace Mono.Cecil {
 			: base (type)
 		{
 			Mixin.CheckType (type);
-			this.etype = MD.ElementType.Array;
+			this.etype = Metadata.ElementType.Array;
 		}
 
 		public ArrayType (TypeReference type, int rank)
@@ -139,7 +139,7 @@ namespace Mono.Cecil {
 			dimensions = new Collection<ArrayDimension> (rank);
 			for (int i = 0; i < rank; i++)
 				dimensions.Add (new ArrayDimension ());
-			this.etype = MD.ElementType.Array;
+			this.etype = Metadata.ElementType.Array;
 		}
 	}
 }

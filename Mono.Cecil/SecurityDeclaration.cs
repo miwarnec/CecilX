@@ -13,7 +13,7 @@ using System.Diagnostics;
 using System.Threading;
 using Mono.Collections.Generic;
 
-namespace Mono.Cecil {
+namespace Mono.CecilX {
 
 	public enum SecurityAction : ushort {
 		Request = 1,
