@@ -2,16 +2,18 @@
   <Import Project="..\..\..\Mono.Cecil.Tests.props" />
   <PropertyGroup>
     <TargetFrameworks>netcoreapp2.1;net40</TargetFrameworks>
+    <AssemblyName>Mono.CecilX.Mdb.Tests</AssemblyName>
+    <RootNamespace>Mono.CecilX.Mdb.Tests</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Mono.Cecil.csproj">
-      <Name>Mono.Cecil</Name>
+      <Name>Mono.CecilX</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Test\Mono.Cecil.Tests.csproj">
-      <Name>Mono.Cecil.Tests</Name>
+      <Name>Mono.CecilX.Tests</Name>
     </ProjectReference>
     <ProjectReference Include="..\Mono.Cecil.Mdb.csproj">
-      <Name>Mono.Cecil.Mdb</Name>
+      <Name>Mono.CecilX.Mdb</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

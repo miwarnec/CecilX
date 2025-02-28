@@ -3,10 +3,12 @@
     <TargetFrameworks>netstandard2.0;net40</TargetFrameworks>
     <NoWarn>0649</NoWarn>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AssemblyName>Mono.CecilX.Pdb</AssemblyName>
+    <RootNamespace>Mono.CecilX.Pdb</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Mono.Cecil.csproj">
-      <Name>Mono.Cecil</Name>
+      <Name>Mono.CecilX</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

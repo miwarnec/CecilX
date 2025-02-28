@@ -2,6 +2,8 @@
   <Import Project="..\Mono.Cecil.Tests.props" />
   <PropertyGroup>
     <TargetFrameworks>netcoreapp2.1;net40</TargetFrameworks>
+    <AssemblyName>Mono.CecilX.Tests</AssemblyName>
+    <RootNamespace>Mono.CecilX.Tests</RootNamespace>
   </PropertyGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.1' ">
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp">
@@ -10,13 +12,13 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Mono.Cecil.csproj">
-      <Name>Mono.Cecil</Name>
+      <Name>Mono.CecilX</Name>
     </ProjectReference>
     <ProjectReference Include="..\symbols\mdb\Mono.Cecil.Mdb.csproj">
-      <Name>Mono.Cecil.Mdb</Name>
+      <Name>Mono.CecilX.Mdb</Name>
     </ProjectReference>
     <ProjectReference Include="..\symbols\pdb\Mono.Cecil.Pdb.csproj">
-      <Name>Mono.Cecil.Pdb</Name>
+      <Name>Mono.CecilX.Pdb</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -2,10 +2,12 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net40</TargetFrameworks>
     <DefineConstants>$(DefineConstants);INSIDE_ROCKS</DefineConstants>
+    <AssemblyName>Mono.CecilX.Rocks</AssemblyName>
+    <RootNamespace>Mono.CecilX.Rocks</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Mono.Cecil.csproj">
-      <Name>Mono.Cecil</Name>
+      <Name>Mono.CecilX</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
