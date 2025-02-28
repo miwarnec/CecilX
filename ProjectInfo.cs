@@ -9,6 +9,7 @@
 
 using System.Reflection;
 using System.Runtime.InteropServices;
+using Mono.CecilX;
 
 [assembly: AssemblyProduct (Consts.AssemblyName)]
 [assembly: AssemblyCopyright ("Copyright © 2008 - 2018 Jb Evain")]
